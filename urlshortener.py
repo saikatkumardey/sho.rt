@@ -1,7 +1,3 @@
-#AUTHOR: Saikat Kumar Dey
-#ABOUT: a simple database-backed url-shortening software, can be used as an API in a web-app.
-#INSPIRATION: http://stackoverflow.com/questions/742013/how-to-code-a-url-shortener
-
 import string
 from random import Random,randint
 import sqlite3

@@ -13,3 +13,7 @@ For testing purpose, this software uses sqlite3 database. So, you can simply use
 python urlshortener.py
 
 ```
+
+
+References:
+[Stack Overflow](http://stackoverflow.com/questions/742013/how-to-code-a-url-shortener)
