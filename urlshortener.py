@@ -42,7 +42,7 @@ class Url_Shortener():
 		else:
 			max_num+=1
 		
-		auto_increment_num= max_num
+		auto_increment_num= max_num #use the next id to encode create short url
 		digits_base=[]
 		while auto_increment_num > 0:
 			remainder= auto_increment_num%self.base
@@ -80,10 +80,9 @@ def main():
 			print "\n\nHere's your short_url: ",short_url
 			print "\n\n"
 			print "decoding it again to test: ",my_url.decode_url(short_url)
+			my_url.connection.commit() #commit changes to the database
 			print "\n\n"
 		except:
-			#Commit all data to database when an exception occurs (eg, if an interrupt signal is received by the program)
-			my_url.connection.commit()
 			break
 
 if __name__=="__main__":
