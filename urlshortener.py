@@ -1,5 +1,6 @@
 #AUTHOR: Saikat Kumar Dey
-
+#ABOUT: a simple database-backed url-shortening software, can be used as an API in a web-app.
+#INSPIRATION: http://stackoverflow.com/questions/742013/how-to-code-a-url-shortener
 
 import string
 from random import Random,randint
@@ -68,20 +69,22 @@ class Url_Shortener():
 			i+=1
 		get_long_url= self.db.execute("select * from url_shortener where id=%d"%orig_id).fetchone()[1]
 		return get_long_url
-		#print "hey,",get_long_url.fetchone()[1]
-
-	def print_stuff(self):
-		print "THE DATABASE: ",self.db.execute("select * from url_shortener").fetchall()
 
 
+def main():
+	my_url= Url_Shortener()
+	while(1):
+		try:
+			long_url= raw_input("\n\nEnter you long url: ")
+			short_url= my_url.encode_url(long_url)
+			print "\n\nHere's your short_url: ",short_url
+			print "\n\n"
+			print "decoding it again to test: ",my_url.decode_url(short_url)
+			print "\n\n"
+		except:
+			#Commit all data to database when an exception occurs (eg, if an interrupt signal is received by the program)
+			my_url.connection.commit()
+			break
 
-my_url= Url_Shortener()
-
-while(1):
-	try:
-		long_url= raw_input("Enter you long url: ")
-		short_url= my_url.encode_url(long_url)
-		print "Here's your short_url: ",short_url
-		print "decoding it again to test: ",my_url.decode_url(short_url)
-	except:
-		my_url.connection.commit()
+if __name__=="__main__":
+	main()
