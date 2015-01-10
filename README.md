@@ -10,9 +10,22 @@ For testing purpose, this software uses sqlite3 database. So, you can simply use
 
 ```
 
-python urlshortener.py
+from urlshortener import Url_Shortener
+
+url_obj = Url_Shortener()
+
+#encode the URL
+
+encoded_url = url_obj.encode("docs.oracle.com/javase")   #say the short URL generated is "sho.rt/ab2"
+
+#decode the URL
+
+decoded_url = url_obj.decode("sho.rt/ab2")    #generates "docs.oracle.com/javase"
+
 
 ```
+
+
 
 
 References:

@@ -67,6 +67,9 @@ class Url_Shortener():
 		return get_long_url
 
 
+
+##test the methods
+
 def main():
 	my_url= Url_Shortener()
 	while(1):
